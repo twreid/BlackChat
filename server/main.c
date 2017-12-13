@@ -24,7 +24,7 @@ along with BlackChat.  If not, see <http://www.gnu.org/licenses/>.
 
 SERVER_OBJ *bc_server;
 
-void update_time(int sig){
+void update_time(int sig) {
     char *buff = (char *)malloc(256);
     char *lurk_text = (char *)malloc(16);
     char *to_client = (char *)malloc(256);
@@ -36,7 +36,7 @@ void update_time(int sig){
       memset(buff, '\0', 256);
       memset(lurk_text, '\0', 16);
       memset(to_client, '\0', 256);
-      if(bc_server->clients[i]->is_connected){
+      if(bc_server->clients[i]->is_connected) {
 	bc_server->clients[i]->seconds_connected = time(NULL) - bc_server->clients[i]->time_connected;
         if(bc_server->clients[i]->user_data->lurk)
             strcpy(lurk_text, "True");

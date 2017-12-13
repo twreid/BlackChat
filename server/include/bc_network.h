@@ -32,7 +32,7 @@ along with BlackChat.  If not, see <http://www.gnu.org/licenses/>.
 #include <stdbool.h>
 #include "bc_server_queue.h"
 #include "bc_client.h"
-#include "blackchat.h"
+#include "../../protocol/include/blackchat.h"
 
 #define SERVER_PORT 11380
 #define SERVER_IP "127.0.0.1"
