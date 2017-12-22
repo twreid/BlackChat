@@ -14,6 +14,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with BlackChat.  If not, see <http://www.gnu.org/licenses/>.
 */
+
 #ifndef BC_SERVER_QUEUE_H_
 #define BC_SERVER_QUEUE_H_
 
@@ -25,10 +26,8 @@ along with BlackChat.  If not, see <http://www.gnu.org/licenses/>.
 typedef struct node {
 
     void *data;
-
     struct node *next;
     struct node *prev;
-
 
 } NODE_OBJ;
 

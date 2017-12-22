@@ -40,10 +40,6 @@ along with BlackChat.  If not, see <http://www.gnu.org/licenses/>.
 #define LISTEN_QUEUE 20
 #define MAX_IDLE_TIME 1800
 
-
-pthread_mutex_t mutex;
-sem_t messages_sem;
-
 typedef struct server{
   
   int server_socket;

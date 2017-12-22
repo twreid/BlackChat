@@ -23,7 +23,6 @@ along with BlackChat.  If not, see <http://www.gnu.org/licenses/>.
 #include "../../protocol/include/blackchat.h"
 
 typedef struct client {
-
     int client_socket;
     unsigned int bytes_to;
     unsigned int bytes_from;
@@ -35,7 +34,6 @@ typedef struct client {
     pthread_t client_thread_id;
 
     UR_OBJ user_data;
-
 } CLIENT_OBJ;
 
 #endif //BC_CLIENT_H_

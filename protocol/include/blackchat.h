@@ -23,18 +23,18 @@ along with BlackChat.  If not, see <http://www.gnu.org/licenses/>.
 #define	CMD_TEXT		0
 #define	CMD_WINDOW		1
 #define	CMD_VOTE		2
-#define CMD_USERLIST		3
+#define CMD_USERLIST	3
 #define CMD_ERROR		4
 #define	CMD_LURK		5
 
 /* text defines can be combined in the following ways
 	TEXT_MAIN_CHAT & TEXT_YELL
 	TEXT_IM & TEXT_YELL*/
-#define TEXT_MAIN_CHAT	1	// TEXT DEFINE<0-99>:UID<0-256>:TEXT LEN<2048>:TEXT 
-#define TEXT_YELL	2
-#define TEXT_STATUS	4	// TEXT DEFINE:UID:TEXT LEN:TEXT 
-#define TEXT_IM		8	// TEXT DEFINE:FROM UID:TO UID:TEXT LEN:TEXT 
-#define TEXT_MAIN_STATUS 9     //TEXT FOR MAIN STATUS WINDOW
+#define TEXT_MAIN_CHAT		1	// TEXT DEFINE<0-99>:UID<0-256>:TEXT LEN<2048>:TEXT 
+#define TEXT_YELL			2
+#define TEXT_STATUS			4	// TEXT DEFINE:UID:TEXT LEN:TEXT 
+#define TEXT_IM				8	// TEXT DEFINE:FROM UID:TO UID:TEXT LEN:TEXT 
+#define TEXT_MAIN_STATUS 	9	//TEXT FOR MAIN STATUS WINDOW
 
 /* window defines */
 #define TYP_STATUS	0
@@ -44,21 +44,24 @@ along with BlackChat.  If not, see <http://www.gnu.org/licenses/>.
 #define TYP_INPUT	4
 #define TYP_DISPLAY	5
 
-#define VOTE			0
+#define VOTE				0
 #define VOTE_ACCEPTED		1
 #define VOTE_NOT_ACCEPTED	2
 
-#define USER_LIST_REQUEST	0
-#define USER_LIST_USER_NAME	1
+#define USER_LIST_REQUEST		0
+#define USER_LIST_USER_NAME		1
 #define USER_LIST_RECEIVE_UID	3
-#define USER_LIST_CURRENT	4
-#define USER_LIST_SIGN_OFF	5
+#define USER_LIST_CURRENT		4
+#define USER_LIST_SIGN_OFF		5
 
-#define USER_NAME_LEN	20	//this is code points not chars
-				/* which means any char that uses this will need
-				to times this by 4 for the max size */
-				
-#define UID_LEN	3
+/*
+	this is code points not chars
+	which means any char that uses this will need
+	to times this by 4 for the max size
+*/
+#define USER_NAME_LEN	20
+
+#define UID_LEN	4
 
 typedef struct protocol_command {
 
@@ -85,7 +88,7 @@ typedef struct user_obj {
 	char name[USER_NAME_LEN*4];	//alpha num + foreign chars
 	HST_OBJ im;
 } *UR_OBJ;
-			
+
 int get_type_from_message(const char *message);
 /* returns CMD_* */
 
