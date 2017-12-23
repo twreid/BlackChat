@@ -2,11 +2,11 @@
 # -- Server
 #
 
-CC = gcc
-CFLAGS = -Wall -g -std=c99 -I../protocol/include -Iinclude
+CC = clang 
+CFLAGS = -Wall -Werror -g -std=c11 -I../protocol/include -Iinclude
 LIBS = -lpthread ../bin/lib/libbcprotocol.a
 BUILD_DIR = ../bin
-OBJS = bc_network.o bc_server_queue.o main.o
+OBJS = bc_network.o bc_server_queue.o server.o
 
 .PHONY: clean
 

@@ -1,5 +1,5 @@
 all: protocol.c
-	gcc -c -g -Wall -Wformat-security -Wmissing-prototypes -Wchar-subscripts protocol.c -o protocol.o
+	clang -c -g -Wall -Werror -std=c11 -Wformat-security -Wmissing-prototypes -Wchar-subscripts protocol.c -o protocol.o
 	ar rcs libbcprotocol.a protocol.o
 	mv libbcprotocol.a ../bin/lib/
 	rm protocol.o
