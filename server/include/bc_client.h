@@ -1,4 +1,4 @@
-/* Copyright (C) 2010  BlackChat Group 
+/* Copyright (C) 2010  BlackChat Group
 This file is part of BlackChat.
 
 Ashes is free software: you can redistribute it and/or modify
@@ -17,23 +17,24 @@ along with BlackChat.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef BC_CLIENT_H_
 #define BC_CLIENT_H_
 
-#include <pthread.h>
-#include <time.h>
-#include "bc_server_queue.h"
 #include "../../protocol/include/blackchat.h"
+#include "bc_server_queue.h"
+#include <pthread.h>
+#include <stdbool.h>
+#include <time.h>
 
 typedef struct client {
-    int client_socket;
-    unsigned int bytes_to;
-    unsigned int bytes_from;
-    time_t time_connected;
-    time_t seconds_connected;
-    bool is_connected;
-    struct server *server;
-    struct server_queue *messages;
-    pthread_t client_thread_id;
+  int client_socket;
+  unsigned int bytes_to;
+  unsigned int bytes_from;
+  time_t time_connected;
+  time_t seconds_connected;
+  bool is_connected;
+  struct server *server;
+  struct server_queue *messages;
+  pthread_t client_thread_id;
 
-    UR_OBJ user_data;
+  UR_OBJ user_data;
 } CLIENT_OBJ;
 
-#endif //BC_CLIENT_H_
+#endif // BC_CLIENT_H_
