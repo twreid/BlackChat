@@ -1,4 +1,4 @@
-/* Copyright (C) 2010  BlackChat Group 
+/* Copyright (C) 2010  BlackChat Group
 This file is part of BlackChat.
 
 Ashes is free software: you can redistribute it and/or modify
@@ -21,14 +21,14 @@ along with BlackChat.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef __CLIENT_SOCKET__
 #define __CLIENT_SOCKET__
 
-
 /* Creates a client socket and returns the file descriptor for it. */
 int init_client(char *name);
 
 /* initializes the client side user list */
 void init_user_list(int client_id);
 
-/* Closes a client socket.  You must pass in the file descriptor created by init_client */
+/* Closes a client socket.  You must pass in the file descriptor created by
+ * init_client */
 void close_client(int client_id);
 
 /* Received enter key from client. ONLY WRITES TEXT FROM MAIN CHAT WINDOW!!!*/
@@ -56,4 +56,3 @@ void write_deep_six(int client_id);
 void submit_deep_six(int client_id, int vote_id);
 
 #endif
-

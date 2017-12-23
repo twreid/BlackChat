@@ -15,6 +15,9 @@ server:
 protocol:
 	cd protocol; make
 
+format:
+	find . \( -name '*.h' -or -name '*.c' \) -print0 | xargs -0 clang-format -i
+
 concurses:
 	cd ncurses; ./configure --enable-widec --with-shared --disable-static --enable-ext-colors
 

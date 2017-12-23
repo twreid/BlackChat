@@ -1,4 +1,4 @@
-/* Copyright (C) 2010  BlackChat Group 
+/* Copyright (C) 2010  BlackChat Group
 This file is part of BlackChat.
 
 Ashes is free software: you can redistribute it and/or modify
@@ -19,9 +19,8 @@ along with BlackChat.  If not, see <http://www.gnu.org/licenses/>.
 #define __LOGGER__
 
 void log_init();
-void log_write(const char* str, ...);
-void log_writeln(const char* str, ...);
+void log_write(const char *str, ...);
+void log_writeln(const char *str, ...);
 void log_close();
-
 
 #endif

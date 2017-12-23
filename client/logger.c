@@ -1,4 +1,4 @@
-/* Copyright (C) 2010  BlackChat Group 
+/* Copyright (C) 2010  BlackChat Group
 This file is part of BlackChat.
 
 Ashes is free software: you can redistribute it and/or modify
@@ -15,51 +15,40 @@ You should have received a copy of the GNU General Public License
 along with BlackChat.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include "logger.h"
+#include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdarg.h>
-#include "logger.h"
-
 
 FILE *logFile = NULL;
 
-
-
-void log_init()
-{
-	logFile = fopen("client.log", "w");
-	if (logFile == NULL) {
-		fprintf(stderr, "Can't open log file log.txt!\n");
-		exit(1);
-	}
+void log_init() {
+  logFile = fopen("client.log", "w");
+  if (logFile == NULL) {
+    fprintf(stderr, "Can't open log file log.txt!\n");
+    exit(1);
+  }
 }
 
+void log_write(const char *str, ...) {
+  va_list args;
+  va_start(args, str);
+  vfprintf(logFile, str, args);
+  va_end(args);
 
-void log_write(const char *str, ...)
-{	
-	va_list args;
-	va_start(args, str);
-	vfprintf(logFile, str, args);
-	va_end(args);
-	
-	if(fflush(logFile) != 0) fprintf(stderr, "Can't flush stream in Log_Write!\n");
+  if (fflush(logFile) != 0)
+    fprintf(stderr, "Can't flush stream in Log_Write!\n");
 }
 
+void log_writeln(const char *str, ...) {
+  va_list args;
+  va_start(args, str);
+  vfprintf(logFile, str, args);
+  va_end(args);
 
-void log_writeln(const char *str, ...)
-{	
-	va_list args;
-	va_start(args, str);
-	vfprintf(logFile, str, args);
-	va_end(args);
-	
-	fprintf(logFile, "\n");
-	if(fflush(logFile) != 0) fprintf(stderr, "Can't flush stream in Log_Write!\n");
+  fprintf(logFile, "\n");
+  if (fflush(logFile) != 0)
+    fprintf(stderr, "Can't flush stream in Log_Write!\n");
 }
 
-
-void log_close()
-{
-	fclose(logFile);
-}
-
+void log_close() { fclose(logFile); }
