@@ -31,22 +31,23 @@ along with BlackChat.  If not, see <http://www.gnu.org/licenses/>.
 #include <errno.h>
 #include <sys/ioctl.h>
 #include <ncurses.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/select.h>
 #include "include/clientsocket.h"
 #include "include/client.h"
 #include "include/logger.h"
 
+#define OTHER_WINDOW_BUFFER_SIZE		256
+#define MAX_MESSAGE_LENGTH                      128
 
-#define OTHER_WINDOW_BUFFER_SIZE			256
-#define MAX_MESSAGE_LENGTH                              128
-
-
-#define MAX_ROWS					1
-#define MAX_COLUMNS 					80
+#define MAX_ROWS				1
+#define MAX_COLUMNS 				80
 #define MAX_CHARS_IN_CLIENT_TYPING_WINDOW 	MAX_ROWS * MAX_COLUMNS
 
-#define TRANSCRIPT_MAX_ROWS				23
-#define TRANSCRIPT_MAX_COLUMNS				40
-#define MAX_CHARS_IN_TRANSCRIPT_WINDOW		TRANSCRIPT_MAX_ROWS * TRANSCRIPT_MAX_COLUMNS
+#define TRANSCRIPT_MAX_ROWS		        23
+#define TRANSCRIPT_MAX_COLUMNS		        40
+#define MAX_CHARS_IN_TRANSCRIPT_WINDOW          TRANSCRIPT_MAX_ROWS * TRANSCRIPT_MAX_COLUMNS
 
 
 
@@ -891,13 +892,13 @@ int main(int argc, char* argv[])
         signal(SIGALRM, scroll_ended_handler);
 
         for(i = 0; i < 26; i ++) {   /* set our message to null */
-                memset(yell_messages[i], '\0', MAX_MESSAGE_LENGTH * sizeof(char)); 
+          memset(yell_messages[i], '\0', MAX_MESSAGE_LENGTH * sizeof(char)); 
         }
 
 	transcript_buffer   = (char*)malloc(sizeof(char)*transcript_buffer_size);
 	f_transcript_buffer = (char*)malloc(sizeof(char)*f_transcript_buffer_size);
-    memset(client_buffer, '\0', sizeof(client_buffer));
-	memset(transcript_buffer, '\0', sizeof(transcript_buffer));
+        memset(client_buffer, '\0', sizeof(client_buffer));
+	memset(transcript_buffer, '\0', sizeof(char)*transcript_buffer_size);
 
 	get_terminal_size(&x_terminal_size, &y_terminal_size);
 	log_writeln(" > ... detecting current terminal size xy:(%d,%d)", x_terminal_size, y_terminal_size);

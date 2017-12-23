@@ -322,10 +322,10 @@ sprintf(biff, "biff: \"%s\"", text);
                 UR_OBJ user_list[10];       //list of all users currently on server
                 UR_OBJ temp_user = malloc( sizeof(struct user_obj) );
                 ul_type = get_userlist_type_from_message(servout);
-                int i, j;
-char buf[512];
-sprintf(buf, "ul_type %d", ul_type);
-//write_to_transcript_window(buf);
+                int i;
+                char buf[512];
+                sprintf(buf, "ul_type %d", ul_type);
+                //write_to_transcript_window(buf);
                 switch(ul_type)
                 {
                     case USER_LIST_CURRENT:       //This means we are getting the current user list from the server.
